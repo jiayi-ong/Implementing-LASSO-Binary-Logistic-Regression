@@ -8,7 +8,9 @@ Jia Yi ONG
 I implement the binary logistic LASSO using the coordinate descent and
 Iteratively Reweighted Least Squares (IRLS) algorithms. In the following
 section, I wrap my algorithm as a parsnip model and demonstrate how it
-can be used in the tidymodels workflow.
+can be used in the tidymodels workflow. 
+
+functions.R contains the algorithms, make_tidy.R makes the algorithm into a parsnip model.
 
 # Introduction
 
@@ -17,7 +19,8 @@ penalties. This model will train on a dataset about the career longevity
 of NBA rookies, obtained from data.world’s Binary Classification
 Exercise Dataset. The outcome variable is whether the rookie’s career
 lasted for at least 5 years and the explanatory variables are various
-traits and records.
+traits and records. The penalty parameter will be tuned, and the results of the 
+final model interpreted briefly.
 
 We’ll require two packages.
 
@@ -124,7 +127,7 @@ spec = logistic_lasso(penalty = tune()) %>%
 ```
 
 Lastly, we initialize a workflow and add the recipe and model
-speficiation defined earlier.
+specification defined earlier.
 
 ``` r
 workflow = workflow() %>% 
